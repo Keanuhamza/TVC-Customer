@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-class Address {
+class Contact {
 
     private @Id @GeneratedValue Long id;
     private String name;
@@ -69,7 +69,7 @@ class Address {
     //Overides
     @Override
     public java.lang.String toString() {
-        return "Address{" +
+        return "Contact{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", phone=" + phone +
@@ -82,8 +82,8 @@ class Address {
         if (this == object) return true;
         if (object == null || getClass() != object.getClass()) return false;
         if (!super.equals(object)) return false;
-        Address address = (Address) object;
-        return phone == address.phone && java.util.Objects.equals(id, address.id) && java.util.Objects.equals(name, address.name) && java.util.Objects.equals(email, address.email) && java.util.Objects.equals(position, address.position);
+        Contact contact = (Contact) object;
+        return phone == contact.phone && java.util.Objects.equals(id, contact.id) && java.util.Objects.equals(name, contact.name) && java.util.Objects.equals(email, contact.email) && java.util.Objects.equals(position, contact.position);
     }
     @Override
     public int hashCode() {
