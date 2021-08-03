@@ -16,9 +16,9 @@ class Contact {
     private string position;
 
     //Constructors
-    public Employee() {}
+    public Contact() {}
 
-    public Employee(Long id, String name, int phone, string email, string position) {
+    public Contact(Long id, String name, int phone, string email, string position) {
         this.id = id;
         this.name = name;
         this.phone = phone;
