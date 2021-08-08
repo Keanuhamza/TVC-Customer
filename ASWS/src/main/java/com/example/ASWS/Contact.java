@@ -11,14 +11,14 @@ class Contact {
 
     private @Id @GeneratedValue Long id;
     private String name;
-    private int phone;
-    private string email;
-    private string position;
+    private Long phone;
+    private String email;
+    private String position;
 
     //Constructors
     public Contact() {}
 
-    public Contact(Long id, String name, int phone, string email, string position) {
+    public Contact(Long id, String name, Long phone, String email, String position) {
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -35,15 +35,15 @@ class Contact {
         return name;
     }
 
-    public int getPhone() {
+    public Long getPhone() {
         return phone;
     }
 
-    public string getEmail() {
+    public String getEmail() {
         return email;
     }
 
-    public string getPosition() {
+    public String getPosition() {
         return position;
     }
     //Setters
@@ -55,15 +55,15 @@ class Contact {
         this.name = name;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(Long phone) {
         this.phone = phone;
     }
 
-    public void setEmail(string email) {
+    public void setEmail(String email) {
         this.email = email;
     }
 
-    public void setPosition(string position) {
+    public void setPosition(String position) {
         this.position = position;
     }
     //Overides

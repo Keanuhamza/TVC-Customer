@@ -8,8 +8,9 @@ public class AswsApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AswsApplication.class, args);
-		System.out.println("Works");
+		System.out.println("Program has started!");
 		System.out.println("BBB");
 	}
 
 }
+
