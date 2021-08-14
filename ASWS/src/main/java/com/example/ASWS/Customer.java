@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.ASWS;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -14,7 +14,8 @@ import javax.persistence.Id;
 @Entity
 class Customer {
 	// Attributes of class fields (Parameters) are declared.
-	private String companyName;
+	
+	private @Id String companyName;
 	private String address;
 	private String country;
   
@@ -72,7 +73,7 @@ class Customer {
         return java.util.Objects.hash(super.hashCode(), companyName, address, country);
     }
 }
-
+/*
 @SpringBootApplication
 class FatApplication {
 	public static void main(String[] args) {
@@ -161,3 +162,4 @@ class FatApplication {
 		input.close();
 	}
 }
+*/

@@ -5,17 +5,20 @@ import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 
 @Configuration
 class LoadDatabase {
 
   private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 
-  @Bean
-  CommandLineRunner initDatabase(ContactRepository repository) {
+  @Bean @Order
+  CommandLineRunner initDatabase(CustomerRepository repository, ContactRepository repository2) {
 
     return args -> {
-      log.info("Preloading " + repository.save(new Contact(10001L, "Lucifer", 630450028989L, "kh784@uowmail.edu.au", "CEO")));
+      log.info("Preloading " + repository.save(new Customer("Nasa", "And", "kh784@uowmail.edu.au")));
+      log.info("Preloading " + repository2.save(new Contact(10001L, "Lucifer", 630450028989L, "kh784@uowmail.edu.au", "CEO")));
     };
   }
+
 }
