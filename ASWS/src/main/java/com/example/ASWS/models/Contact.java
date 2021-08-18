@@ -1,4 +1,4 @@
-package com.example.ASWS;
+package com.example.ASWS.models;
 
 import java.util.Objects;
 
@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-class Contact {
+public class Contact {
 
     private @Id @GeneratedValue Long id;
     private String name;

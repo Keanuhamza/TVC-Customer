@@ -1,6 +1,10 @@
-package com.example.ASWS;
+package com.example.ASWS.controllers;
 
 import java.util.List;
+
+import com.example.ASWS.models.*;
+import com.example.ASWS.repositories.*;
+import com.example.ASWS.exceptions.*;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-class ContactController {
+public class ContactController {
 
   private final ContactRepository repository;
 

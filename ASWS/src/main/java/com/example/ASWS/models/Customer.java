@@ -1,4 +1,5 @@
-package com.example.ASWS;
+package com.example.ASWS.models;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -12,7 +13,7 @@ import javax.persistence.Id;
 
 // Customer Class
 @Entity
-class Customer {
+public class Customer {
 	// Attributes of class fields (Parameters) are declared.
 	
 	private @Id String companyName;
@@ -20,10 +21,10 @@ class Customer {
 	private String country;
   
 	// Default Constructor
-	Customer() {}
+	public Customer() {}
   
 	// Parameterized Constructor
-	Customer(String companyName, String address, String country) {
+	public Customer(String companyName, String address, String country) {
 		this.companyName = companyName;
 		this.address = address;
 		this.country = country;

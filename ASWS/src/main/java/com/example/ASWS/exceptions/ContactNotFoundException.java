@@ -1,8 +1,7 @@
-package com.example.ASWS;
+package com.example.ASWS.exceptions;
 
 public class ContactNotFoundException extends RuntimeException {
-
-    ContactNotFoundException(Long id) {
+    public ContactNotFoundException(Long id) {
       super("Could not find contact " + id);
     }
-  }
+}
