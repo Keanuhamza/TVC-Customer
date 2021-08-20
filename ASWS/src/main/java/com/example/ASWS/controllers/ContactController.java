@@ -51,8 +51,10 @@ public class ContactController {
     return repository.findById(id)
       .map(contact -> {
         contact.setName(newContact.getName());
+        contact.setPhone(newContact.getPhone());
+        contact.setEmail(newContact.getEmail());
         contact.setPosition(newContact.getPosition());
-        return repository.save(newContact);
+        return repository.save(contact);
       })
       .orElseGet(() -> {
         newContact.setId(id);
@@ -61,7 +63,7 @@ public class ContactController {
   }
 
   @DeleteMapping("/contact/{id}")
-  void deleteContact(@PathVariable Long id) {
+  void deleteContact(@PathVariable("id") Long id) {
     repository.deleteById(id);
   }
 }

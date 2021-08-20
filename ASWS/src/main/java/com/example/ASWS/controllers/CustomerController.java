@@ -68,8 +68,8 @@ public class CustomerController {
     return repository.save(customer);
   }
 
-  @DeleteMapping("/customr/{id}")
-  void deleteCustomer(@PathVariable String id) {
+  @DeleteMapping("/customer/{id}")
+  void deleteCustomer(@PathVariable("id") String id) {
     repository.deleteById(id);
   }
 }

@@ -16,8 +16,10 @@ public class Customer {
 	private @Id String companyName;
 	private String address;
 	private String country;
+	
 	@OneToOne
 	@JsonIgnore
+	@JoinColumn(name = "contact_id")
   	private Contact contact;
 	// Default Constructor
 	public Customer() {}
