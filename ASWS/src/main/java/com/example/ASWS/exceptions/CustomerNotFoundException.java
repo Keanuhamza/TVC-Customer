@@ -1,8 +1,7 @@
-package com.example.ASWS;
+package com.example.ASWS.exceptions;
 
 public class CustomerNotFoundException extends RuntimeException {
-
-    CustomerNotFoundException(String id) {
+    public CustomerNotFoundException(String id) {
       super("Could not find customer " + id);
     }
   }

@@ -1,5 +1,8 @@
 package com.example.ASWS;
 
+import com.example.ASWS.models.*;
+import com.example.ASWS.repositories.*;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
@@ -8,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
 
 @Configuration
-class LoadDatabase {
+public class LoadDatabase {
 
   private static final Logger log = LoggerFactory.getLogger(LoadDatabase.class);
 

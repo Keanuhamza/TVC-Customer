@@ -1,29 +1,31 @@
-package com.example.ASWS;
+package com.example.ASWS.models;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
 import java.util.InputMismatchException;
 import java.util.Objects;
 import java.util.Scanner;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-
 // Customer Class
 @Entity
-class Customer {
+public class Customer {
 	// Attributes of class fields (Parameters) are declared.
 	
 	private @Id String companyName;
 	private String address;
 	private String country;
-  
+	
+	@OneToOne
+	@JsonIgnore
+	@JoinColumn(name = "contact_id")
+  	private Contact contact;
 	// Default Constructor
-	Customer() {}
+	public Customer() {}
   
 	// Parameterized Constructor
-	Customer(String companyName, String address, String country) {
+	public Customer(String companyName, String address, String country) {
 		this.companyName = companyName;
 		this.address = address;
 		this.country = country;
@@ -42,7 +44,11 @@ class Customer {
 	public String getCountry() {
 		return this.country;
 	}
-  
+
+	public Contact getContact() {
+		return contact;
+	}
+
 	// Mutator Methods
   
 	public void setCompanyName(String companyName) {
@@ -56,22 +62,33 @@ class Customer {
 	public void setCountry(String country) {
 	 	this.country = country;
 	}
+
+	public void setContact(Contact contact){
+		this.contact = contact;
+	}
 	
     // Override Methods
-	
-    @Override
-    public java.lang.String toString() {
-        return "Customer{" +
-                "company name=" + companyName +
-                ", address='" + address + '\'' +
-                ", country=" + country +
-                '}';
-    }
-    
-    @Override
-    public int hashCode() {
-        return java.util.Objects.hash(super.hashCode(), companyName, address, country);
-    }
+	@java.lang.Override
+	public java.lang.String toString() {
+		return "Customer{" +
+				"companyName='" + companyName + '\'' +
+				", address='" + address + '\'' +
+				", country='" + country + '\'' +
+				", contact=" + contact +
+				'}';
+	}
+
+	public boolean equals(Object object) {
+		if (this == object) return true;
+		if (object == null || getClass() != object.getClass()) return false;
+		if (!super.equals(object)) return false;
+		Customer customer = (Customer) object;
+		return java.util.Objects.equals(companyName, customer.companyName) && java.util.Objects.equals(address, customer.address) && java.util.Objects.equals(country, customer.country) && java.util.Objects.equals(contact, customer.contact);
+	}
+
+	public int hashCode() {
+		return java.util.Objects.hash(super.hashCode(), companyName, address, country, contact);
+	}
 }
 /*
 @SpringBootApplication
