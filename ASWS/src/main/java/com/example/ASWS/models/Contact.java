@@ -26,7 +26,7 @@ public class Contact {
         this.position = position;
     }
 
-    //Gtters
+    //Getters
     public Long getId() {
         return id;
     }

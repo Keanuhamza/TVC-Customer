@@ -40,28 +40,28 @@ public class CustomerController {
 
   // Single item
   @GetMapping("/customer/{id}")
-  Customer one(@PathVariable String id) {
+  Customer one(@PathVariable Long id) {
     return repository.findById(id).orElseThrow(() -> new CustomerNotFoundException(id));
   }
 
   @PutMapping("/customer/{id}")
-  Customer replaceCustomer(@RequestBody Customer newCustomer, @PathVariable String id) {
+  Customer replaceCustomer(@RequestBody Customer newCustomer, @PathVariable Long id) {
 
     return repository.findById(id)
       .map(customer -> {
         customer.setCompanyName(newCustomer.getCompanyName());
         customer.setAddress(newCustomer.getAddress());
         customer.setCountry(newCustomer.getCountry());
-        return repository.save(newCustomer);
+        return repository.save(customer);
       })
       .orElseGet(() -> {
-        newCustomer.setCompanyName(newCustomer.getCompanyName());
+        newCustomer.setId(id);
         return repository.save(newCustomer);
       });
   }
 
   @PutMapping("/customer/{id}/contact/{contactid}")
-  Customer updateCustomerContact(@PathVariable String id, @PathVariable Long contactid) {
+  Customer updateCustomerContact(@PathVariable Long id, @PathVariable Long contactid) {
     Customer customer = repository.findById(id).orElseThrow(RuntimeException::new);
     Contact contact = contactRepository.findById(contactid).orElseThrow(RuntimeException::new);
     customer.setContact(contact);
@@ -69,7 +69,7 @@ public class CustomerController {
   }
 
   @DeleteMapping("/customer/{id}")
-  void deleteCustomer(@PathVariable("id") String id) {
+  void deleteCustomer(@PathVariable("id") Long id) {
     repository.deleteById(id);
   }
 }

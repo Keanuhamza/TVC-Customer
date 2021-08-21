@@ -13,26 +13,29 @@ import java.util.Scanner;
 public class Customer {
 	// Attributes of class fields (Parameters) are declared.
 	
-	private @Id String companyName;
+	private @Id @GeneratedValue Long id;
+	private String companyName;
 	private String address;
 	private String country;
 	
 	@OneToOne
-	@JsonIgnore
-	@JoinColumn(name = "contact_id")
   	private Contact contact;
 	// Default Constructor
 	public Customer() {}
   
 	// Parameterized Constructor
-	public Customer(String companyName, String address, String country) {
+	public Customer(Long id, String companyName, String address, String country) {
+		this.id = id;
 		this.companyName = companyName;
 		this.address = address;
 		this.country = country;
 	}
   
 	// Accessor Methods
-  
+	public Long getId() {
+        return id;
+    }
+
 	public String getCompanyName() {
 		return this.companyName;
 	}
@@ -50,7 +53,10 @@ public class Customer {
 	}
 
 	// Mutator Methods
-  
+	public void setId(Long id) {
+        this.id = id;
+    }
+
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
@@ -71,7 +77,8 @@ public class Customer {
 	@java.lang.Override
 	public java.lang.String toString() {
 		return "Customer{" +
-				"companyName='" + companyName + '\'' +
+				"id=" + id +
+				", companyName='" + companyName + '\'' +
 				", address='" + address + '\'' +
 				", country='" + country + '\'' +
 				", contact=" + contact +
@@ -83,11 +90,11 @@ public class Customer {
 		if (object == null || getClass() != object.getClass()) return false;
 		if (!super.equals(object)) return false;
 		Customer customer = (Customer) object;
-		return java.util.Objects.equals(companyName, customer.companyName) && java.util.Objects.equals(address, customer.address) && java.util.Objects.equals(country, customer.country) && java.util.Objects.equals(contact, customer.contact);
+		return java.util.Objects.equals(id, customer.id) && java.util.Objects.equals(companyName, customer.companyName) && java.util.Objects.equals(address, customer.address) && java.util.Objects.equals(country, customer.country) && java.util.Objects.equals(contact, customer.contact);
 	}
 
 	public int hashCode() {
-		return java.util.Objects.hash(super.hashCode(), companyName, address, country, contact);
+		return java.util.Objects.hash(super.hashCode(), id, companyName, address, country, contact);
 	}
 }
 /*

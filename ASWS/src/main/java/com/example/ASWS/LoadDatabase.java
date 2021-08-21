@@ -19,9 +19,9 @@ public class LoadDatabase {
   CommandLineRunner initDatabase(CustomerRepository repository, ContactRepository repository2) {
 
     return args -> {
-      log.info("Preloading " + repository.save(new Customer("Nasa", "And", "kh784@uowmail.edu.au")));
-      log.info("Preloading " + repository2.save(new Contact(10001L, "Lucifer", 630450028989L, "kh784@uowmail.edu.au", "CEO")));
+      log.info("Preloading " + repository.save(new Customer(1L, "Nasa", "33 Evergreen NSW 3088", "Australia")));
+      log.info("Preloading " + repository2.save(new Contact(1L, "Lucifer", 630450028989L, "kh784@uowmail.edu.au", "CEO")));
     };
-  }
+  } 
 
 }
