@@ -3,9 +3,8 @@ package com.example.ASWS.controllers;
 import java.util.List;
 
 import com.example.ASWS.models.*;
-import com.example.ASWS.repositories.*;
-import com.example.ASWS.exceptions.*;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,53 +16,35 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class ContactController {
 
-  private final ContactRepository repository;
-
-  ContactController(ContactRepository repository) {
-    this.repository = repository;
-  }
-
+  @Autowired
+  private ContactService contactService;
 
   // Aggregate root
   // tag::get-aggregate-root[]
   @GetMapping("/contacts")
   List<Contact> all() {
-    return repository.findAll();
+    return contactService.getAllContacts();
   }
   // end::get-aggregate-root[]
 
   @PostMapping("/contact")
   Contact newContact(@RequestBody Contact newContact) {
-    return repository.save(newContact);
+    return contactService.addContact(newContact);
   }
 
   // Single item
-  
   @GetMapping("/contact/{id}")
   Contact one(@PathVariable Long id) {
-    
-    return repository.findById(id).orElseThrow(() -> new ContactNotFoundException(id));
+    return contactService.getContact(id);
   }
 
   @PutMapping("/contact/{id}")
   Contact replaceContact(@RequestBody Contact newContact, @PathVariable Long id) {
-    
-    return repository.findById(id)
-      .map(contact -> {
-        contact.setName(newContact.getName());
-        contact.setPhone(newContact.getPhone());
-        contact.setEmail(newContact.getEmail());
-        contact.setPosition(newContact.getPosition());
-        return repository.save(contact);
-      })
-      .orElseGet(() -> {
-        newContact.setId(id);
-        return repository.save(newContact);
-      });
+    return contactService.updateContact(newContact, id);
   }
 
   @DeleteMapping("/contact/{id}")
   void deleteContact(@PathVariable("id") Long id) {
-    repository.deleteById(id);
+    contactService.deleteContact(id);
   }
 }
