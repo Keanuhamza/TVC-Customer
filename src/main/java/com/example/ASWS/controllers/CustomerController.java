@@ -25,7 +25,6 @@ public class CustomerController {
   List<Customer> all() {
     return customerService.getAllCustomers();
   }
-  
   // end::get-aggregate-root[]
 
   @PostMapping("/customer")
