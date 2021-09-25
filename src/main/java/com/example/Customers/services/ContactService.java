@@ -29,6 +29,7 @@ public class ContactService {
         return repository.findAll();
     }
 
+    // update contact
     public Contact updateContact(Contact newContact, Long id) {
         return repository.findById(id)
         .map(contact -> {

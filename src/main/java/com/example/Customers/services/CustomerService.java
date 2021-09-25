@@ -30,6 +30,7 @@ public class CustomerService {
         return repository.findAll();
     }
 
+    // update customer
     public Customer updateCustomer(Customer newCustomer, Long id) {
     return repository.findById(id)
       .map(customer -> {
@@ -44,6 +45,7 @@ public class CustomerService {
       });
     }
 
+    // update customer contact
     public Customer updateCustomerContact(Long id, long contactid) {
         Customer customer = repository.findById(id).orElseThrow(RuntimeException::new);
         Contact contact = contactRepository.findById(contactid).orElseThrow(RuntimeException::new);
