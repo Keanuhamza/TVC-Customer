@@ -1,10 +1,10 @@
-package com.example.ASWS;
+package com.example.CustomersTest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class AswsApplicationTests {
+class CustomerApplicationTests {
 
 	@Test
 	void contextLoads() {
