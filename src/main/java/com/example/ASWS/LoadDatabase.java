@@ -21,6 +21,20 @@ public class LoadDatabase {
     return args -> {
       log.info("Preloading " + repository.save(new Customer(1L, "Nasa", "33 Evergreen NSW 3088", "Australia")));
       log.info("Preloading " + repository2.save(new Contact(1L, "Lucifer", 630450028989L, "kh784@uowmail.edu.au", "CEO")));
+
+      log.info("Preloading " + repository.save(new Customer(2L, "FBI", "33 Evergreen NSW 3088", "Australia")));
+      log.info("Preloading " + repository2.save(new Contact(2L, "Steve", 230450028989L, "ah784@uowmail.edu.au", "CEO")));
+
+      log.info("Preloading " + repository.save(new Customer(3L, "CIA", "33 Evergreen NSW 3088", "Australia")));
+      log.info("Preloading " + repository2.save(new Contact(3L, "Sam", 330450028989L, "bh784@uowmail.edu.au", "CEO")));
+
+      log.info("Preloading " + repository.save(new Customer(4L, "TSA", "33 Evergreen NSW 3088", "Australia")));
+      log.info("Preloading " + repository2.save(new Contact(4L, "Kevin", 430450028989L, "ch784@uowmail.edu.au", "CEO")));
+
+      log.info("Preloading " + repository.save(new Customer(5L, "NSA", "33 Evergreen NSW 3088", "Australia")));
+      log.info("Preloading " + repository2.save(new Contact(5L, "John", 530450028989L, "dh784@uowmail.edu.au", "CEO")));
+
+
     };
   } 
 
