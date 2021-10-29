@@ -11,7 +11,6 @@ import java.util.Scanner;
 // Customer Class
 @Entity
 public class Customer {
-	// Attributes of class fields (Parameters) are declared.
 	//Ensures seq id
 	private @Id @GeneratedValue(generator = "CustomerSeq") Long id;
 	private String companyName;
