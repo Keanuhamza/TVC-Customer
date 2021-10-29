@@ -12,8 +12,8 @@ import java.util.Scanner;
 @Entity
 public class Customer {
 	// Attributes of class fields (Parameters) are declared.
-	
-	private @Id @GeneratedValue Long id;
+	//Ensures seq id
+	private @Id @GeneratedValue(generator = "CustomerSeq") Long id;
 	private String companyName;
 	private String address;
 	private String country;
@@ -30,7 +30,15 @@ public class Customer {
 		this.address = address;
 		this.country = country;
 	}
-  
+
+	public Customer(Long id, String companyName, String address, String country, Contact contact) {
+		this.id = id;
+		this.companyName = companyName;
+		this.address = address;
+		this.country = country;
+		this.contact = contact;
+	}
+
 	// Accessor Methods
 	public Long getId() {
         return id;

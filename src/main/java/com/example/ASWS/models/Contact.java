@@ -2,14 +2,15 @@ package com.example.ASWS.models;
 
 import java.util.Objects;
 
+import javax.persistence.GenerationType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
 public class Contact {
-
-    private @Id @GeneratedValue Long id;
+    //Ensures seq id
+    private @Id @GeneratedValue(generator = "ContactSeq")Long id;
     private String name;
     private Long phone;
     private String email;
